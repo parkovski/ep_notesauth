@@ -1,0 +1,11 @@
+{
+  "parts": [
+    {
+      "name": "notesauth",
+      "hooks": {
+        "authenticate": "ep_notesauth/index",
+        "authorize": "ep_notesauth/index"
+      }
+    }
+  ]
+}

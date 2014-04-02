@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.34.0"
+    "request": "^2.34.0",
+    "async-stacktrace": "0.0.2"
   }
 }

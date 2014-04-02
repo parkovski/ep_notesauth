@@ -5,7 +5,8 @@
       "hooks": {
         "authenticate": "ep_notesauth/index",
         "authorize": "ep_notesauth/index",
-        "authFailure": "ep_notesauth/index"
+        "authFailure": "ep_notesauth/index",
+        "handleMessage": "ep_notesauth/index"
       }
     }
   ]

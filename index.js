@@ -104,11 +104,16 @@ module.exports = {
       if(!context.message.token) {
         console.debug('ep_notesauth.handleMessage: intercepted CLIENT_READY message has no token!');
       } else {
-        var client_id = context.client.id;
-        var express_sid = context.client.manager.handshaken[client_id].sessionID;
-        var username = context.client.manager.handshaken[client_id].session.user.displayName;
-        console.debug('ep_notesauth.handleMessage: intercepted CLIENT_READY message for client_id = %s express_sid = %s, setting username for token %s to %s', client_id, express_sid, context.message.token, username);
-        setUsername(context.message.token, username);
+        var client = context.client;
+        var client_id = client.id;
+        var client_handshaken = client.manager.handshaken[client_id];
+        var express_sid = client_handshaken.sessionID;
+        var username;
+        if (client_handshaken.session.user) {
+          var username = client_handshaken.session.user.displayName;
+          console.debug('ep_notesauth.handleMessage: intercepted CLIENT_READY message for client_id = %s express_sid = %s, setting username for token %s to %s', client_id, express_sid, context.message.token, username);
+          setUsername(context.message.token, username);
+        }
       }
     } else if(context.message.type == "COLLABROOM" && context.message.data.type == "USERINFO_UPDATE") {
       console.debug('ep_notesauth.handleMessage: intercepted USERINFO_UPDATE and dropping it!');

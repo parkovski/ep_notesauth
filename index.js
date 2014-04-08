@@ -95,7 +95,7 @@ module.exports = {
     callback([true]);
   },
   authFailure: function(hook, context, callback) {
-    console.log('Auth failure for ' + context.req.path);
+    console.warn('Auth failure for ' + context.req.path);
     context.res.send(401, 'Not authorized. Please <a href="http://www.uanotes.com/login">log in at uanotes.com</a> to continue.');
     callback([true]);
   },
